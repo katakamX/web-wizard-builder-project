@@ -1,12 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useEffect } from "react";
+import CyberNav from "@/components/CyberNav";
+import HeroSection from "@/components/HeroSection";
+import InfoSection from "@/components/InfoSection";
+import ScheduleSection from "@/components/ScheduleSection";
+import CTASection from "@/components/CTASection";
+import CyberFooter from "@/components/CyberFooter";
 
 const Index = () => {
+  // Create the scanline effect element when component mounts
+  useEffect(() => {
+    const scanlines = document.createElement('div');
+    scanlines.className = 'scanlines';
+    document.body.appendChild(scanlines);
+    
+    return () => {
+      document.body.removeChild(scanlines);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-cyber-black text-white">
+      <CyberNav />
+      <HeroSection />
+      <InfoSection />
+      <ScheduleSection />
+      <CTASection />
+      <CyberFooter />
+      
+      {/* Noise overlay */}
+      <div className="fixed inset-0 pointer-events-none z-[1] bg-[url('/noise.png')] opacity-5"></div>
     </div>
   );
 };
